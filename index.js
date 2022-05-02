@@ -76,6 +76,9 @@ app.get('/hero', (req, res) => {
     res.send('hero kuku')
 })
 
+app.get('/heroku', (req, res) => {
+    res.send('i am heroku')
+})
 
 app.listen(port, () => {
     console.log(`Listening on ${port}`)
