@@ -72,6 +72,9 @@ app.get('/', (req, res) => {
     res.send('Hello express!')
 })
 
+app.get('/hero', (req, res) => {
+    res.send('hero kuku')
+})
 
 
 app.listen(port, () => {
