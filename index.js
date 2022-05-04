@@ -30,9 +30,8 @@ async function run() {
         app.get('/product/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: ObjectId(id) }
-            const cursor = productCollection.findOne(query);
-            const result = await cursor.toArray()
-            res.send(result)
+            const product = await productCollection.findOne(query)
+            res.send(product)
         })
 
 
