@@ -37,13 +37,7 @@ async function run() {
             res.send(product)
         })
 
-        // get USER's product
-        app.get('/userProduct/:email', async (req, res) => {
-            const email = req.params.email
-            const cursor = productCollection.find({ email: email });
-            const result = await cursor.toArray()
-            res.send(result)
-        })
+
 
 
         // -----------------------------------------
