@@ -19,7 +19,10 @@ async function run() {
         await client.connect();
 
         const productCollection = client.db('shared-soft').collection('product')
-        // GET method
+
+        // -----------------------------------------
+        // ---------------GET method
+        // -----------------------------------------
         app.get('/product', async (req, res) => {
             const cursor = productCollection.find(req.query);
             const result = await cursor.toArray()
@@ -34,14 +37,25 @@ async function run() {
             res.send(product)
         })
 
+        // get USER's product
+        app.get('/userProduct/:email', async (req, res) => {
+            const email = req.params.email
+            const cursor = productCollection.find({ email: email });
+            const result = await cursor.toArray()
+            res.send(result)
+        })
 
-        //POST method
+
+        // -----------------------------------------
+        // ---------------POST method
+        // -----------------------------------------
         app.post('/product', async (req, res) => {
             const product = req.body; // get the doc
             const result = await productCollection.insertOne(product);
             // console.log(product);
             res.send(result)
         })
+
 
         //PUT methods
         app.put('/product/:id', async (req, res) => {
